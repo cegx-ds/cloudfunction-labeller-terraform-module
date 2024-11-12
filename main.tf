@@ -22,8 +22,14 @@ resource "google_service_account" "function" {
   display_name = "Service Account for impersonation to run Cloud Function ${local.cloud_function_name}"
 }
 
+resource "google_storage_bucket_iam_member" "function" {
+  bucket = var.storage_source_bucket_name
+  role   = "roles/storage.objectViewer"
+  member = google_service_account.function.member
+}
 
 resource "google_cloudfunctions2_function" "function" {
+  depends_on  = [google_storage_bucket_iam_member.function]
   name        = local.cloud_function_name
   project     = var.project_id
   location    = var.region
