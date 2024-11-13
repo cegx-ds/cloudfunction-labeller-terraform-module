@@ -30,7 +30,7 @@ resource "google_service_account" "function" {
 resource "google_storage_bucket_iam_member" "function" {
   bucket = var.storage_source_bucket_name
   role   = "roles/storage.objectViewer"
-  member = local.robot_service_account
+  member = "serviceAccount:${local.robot_service_account}"
 }
 
 resource "google_cloudfunctions2_function" "function" {
