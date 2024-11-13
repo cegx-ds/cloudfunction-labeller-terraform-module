@@ -2,7 +2,7 @@ locals {
   source_bucket_name  = "${var.name}-${var.environment}-source-bucket"
   cloud_function_name = "cf-${var.name}-${var.environment}"
   topic_name          = "${var.name}-${var.environment}-logs-ingestor-topic"
-  create_pubsub_topic = [var.create_pubsub_topic ? 1 : 0]
+  create_pubsub_topic = var.create_pubsub_topic ? [0] : []
 }
 
 resource "google_pubsub_topic" "topic" {
