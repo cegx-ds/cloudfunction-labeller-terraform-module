@@ -36,11 +36,6 @@ variable "cloud_function_description" {
   default     = "Cloud Function Managed by Terraform"
 }
 
-variable "service_account_email" {
-  description = "The email of the service account to be used by the Cloud Function."
-  type        = string
-}
-
 variable "max_instance_count" {
   description = "The maximum number of instances for the Cloud Function."
   type        = number

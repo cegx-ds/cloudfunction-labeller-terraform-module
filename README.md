@@ -20,6 +20,7 @@ No modules.
 | [google-beta_google_pubsub_topic.topic](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_pubsub_topic) | resource |
 | [google_cloudfunctions2_function.function](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions2_function) | resource |
 | [google_service_account.function](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account) | resource |
+| [google_storage_bucket_iam_member.function](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam_member) | resource |
 
 ## Inputs
 
@@ -37,7 +38,6 @@ No modules.
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | project ID to apply resources to | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | region in which to deploy resource | `string` | `"europe-west2"` | no |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | cloud function runtime | `string` | n/a | yes |
-| <a name="input_service_account_email"></a> [service\_account\_email](#input\_service\_account\_email) | The email of the service account to be used by the Cloud Function. | `string` | n/a | yes |
 | <a name="input_storage_source_bucket_name"></a> [storage\_source\_bucket\_name](#input\_storage\_source\_bucket\_name) | Name of the bucket that stores source zip file for cloudfunction | `string` | n/a | yes |
 | <a name="input_storage_source_object_name"></a> [storage\_source\_object\_name](#input\_storage\_source\_object\_name) | Name of the object that contains source code for cloudfunction | `string` | n/a | yes |
 | <a name="input_timeout_seconds"></a> [timeout\_seconds](#input\_timeout\_seconds) | The timeout for the Cloud Function in seconds. | `number` | `120` | no |
@@ -46,5 +46,6 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_pubsub_topic_id"></a> [pubsub\_topic\_id](#output\_pubsub\_topic\_id) | n/a |
 | <a name="output_service_account_email"></a> [service\_account\_email](#output\_service\_account\_email) | n/a |
 | <a name="output_service_account_member"></a> [service\_account\_member](#output\_service\_account\_member) | n/a |
