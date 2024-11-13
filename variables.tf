@@ -51,7 +51,7 @@ variable "min_instance_count" {
 variable "available_memory" {
   description = "The amount of memory available for the Cloud Function."
   type        = string
-  default     = "256MB"
+  default     = "256Mi"
 }
 
 variable "available_cpu" {
