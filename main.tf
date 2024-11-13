@@ -1,8 +1,13 @@
 locals {
-  source_bucket_name  = "${var.name}-${var.environment}-source-bucket"
-  cloud_function_name = "cf-${var.name}-${var.environment}"
-  topic_name          = "${var.name}-${var.environment}-logs-ingestor-topic"
-  create_pubsub_topic = var.create_pubsub_topic ? [0] : []
+  source_bucket_name    = "${var.name}-${var.environment}-source-bucket"
+  cloud_function_name   = "cf-${var.name}-${var.environment}"
+  topic_name            = "${var.name}-${var.environment}-logs-ingestor-topic"
+  create_pubsub_topic   = var.create_pubsub_topic ? [0] : []
+  robot_service_account = "service-${data.google_project.project.number}@gcf-admin-robot.iam.gserviceaccount.com"
+}
+
+data "google_project" "project" {
+  project_id = var.project_id
 }
 
 resource "google_pubsub_topic" "topic" {
@@ -25,7 +30,7 @@ resource "google_service_account" "function" {
 resource "google_storage_bucket_iam_member" "function" {
   bucket = var.storage_source_bucket_name
   role   = "roles/storage.objectViewer"
-  member = google_service_account.function.member
+  member = local.robot_service_account
 }
 
 resource "google_cloudfunctions2_function" "function" {
