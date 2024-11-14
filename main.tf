@@ -10,6 +10,11 @@ data "google_project" "project" {
   project_id = var.project_id
 }
 
+data "google_storage_bucket_object" "src" {
+  name   = var.storage_source_object_name
+  bucket = var.storage_source_bucket_name
+}
+
 resource "google_pubsub_topic" "topic" {
   count    = var.create_pubsub_topic ? 1 : 0
   provider = google-beta
@@ -46,7 +51,7 @@ resource "google_cloudfunctions2_function" "function" {
     source {
       storage_source {
         bucket = var.storage_source_bucket_name
-        object = var.storage_source_object_name
+        object = data.google_storage_bucket_object.src.name
       }
     }
   }
