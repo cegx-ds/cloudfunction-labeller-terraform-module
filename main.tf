@@ -4,6 +4,7 @@ locals {
   topic_name            = "${var.name}-${var.environment}-logs-ingestor-topic"
   create_pubsub_topic   = var.create_pubsub_topic ? [0] : []
   robot_service_account = "service-${data.google_project.project.number}@gcf-admin-robot.iam.gserviceaccount.com"
+  build_service_account = var.build_service_account == "" ? local.robot_service_account : var.build_service_account
 }
 
 data "google_project" "project" {
@@ -35,7 +36,7 @@ resource "google_service_account" "function" {
 resource "google_storage_bucket_iam_member" "function" {
   bucket = var.storage_source_bucket_name
   role   = "roles/storage.objectViewer"
-  member = "serviceAccount:${local.robot_service_account}"
+  member = "serviceAccount:${local.build_service_account}"
 }
 
 resource "google_cloudfunctions2_function" "function" {
@@ -46,8 +47,9 @@ resource "google_cloudfunctions2_function" "function" {
   description = var.cloud_function_description
 
   build_config {
-    runtime     = var.runtime
-    entry_point = var.entry_point
+    service_account = local.build_service_account
+    runtime         = var.runtime
+    entry_point     = var.entry_point
     source {
       storage_source {
         bucket = var.storage_source_bucket_name

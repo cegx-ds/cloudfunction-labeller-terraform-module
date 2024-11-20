@@ -81,3 +81,9 @@ variable "create_pubsub_topic" {
   description = "Whether to create a pubsub topic and attach it to cloud function event trigger"
 }
 
+variable "build_service_account" {
+  type        = string
+  default     = ""
+  description = "service account to use for the build step. If not set it falls back on default compute service account"
+}
+

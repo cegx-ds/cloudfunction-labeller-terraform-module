@@ -22,6 +22,7 @@ No modules.
 | [google_service_account.function](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account) | resource |
 | [google_storage_bucket_iam_member.function](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam_member) | resource |
 | [google_project.project](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/project) | data source |
+| [google_storage_bucket_object.src](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/storage_bucket_object) | data source |
 
 ## Inputs
 
@@ -29,6 +30,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_available_cpu"></a> [available\_cpu](#input\_available\_cpu) | The amount of CPU available for the Cloud Function. | `number` | `1` | no |
 | <a name="input_available_memory"></a> [available\_memory](#input\_available\_memory) | The amount of memory available for the Cloud Function. | `string` | `"256Mi"` | no |
+| <a name="input_build_service_account"></a> [build\_service\_account](#input\_build\_service\_account) | service account to use for the build step. If not set it falls back on default compute service account | `string` | `""` | no |
 | <a name="input_cloud_function_description"></a> [cloud\_function\_description](#input\_cloud\_function\_description) | decription for cloud function | `string` | `"Cloud Function Managed by Terraform"` | no |
 | <a name="input_create_pubsub_topic"></a> [create\_pubsub\_topic](#input\_create\_pubsub\_topic) | Whether to create a pubsub topic and attach it to cloud function event trigger | `bool` | n/a | yes |
 | <a name="input_entry_point"></a> [entry\_point](#input\_entry\_point) | entry point for cloud function | `string` | n/a | yes |
