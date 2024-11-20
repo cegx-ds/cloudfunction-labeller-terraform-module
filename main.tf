@@ -33,14 +33,7 @@ resource "google_service_account" "function" {
   display_name = "Service Account for impersonation to run Cloud Function ${local.cloud_function_name}"
 }
 
-resource "google_storage_bucket_iam_member" "function" {
-  bucket = var.storage_source_bucket_name
-  role   = "roles/storage.objectViewer"
-  member = "serviceAccount:${local.build_service_account}"
-}
-
 resource "google_cloudfunctions2_function" "function" {
-  depends_on  = [google_storage_bucket_iam_member.function]
   name        = local.cloud_function_name
   project     = var.project_id
   location    = var.region
@@ -66,7 +59,9 @@ resource "google_cloudfunctions2_function" "function" {
     available_cpu         = var.available_cpu
     timeout_seconds       = var.timeout_seconds
     ingress_settings      = "ALLOW_INTERNAL_ONLY"
+    environment_variables = var.environment_variables
   }
+
 
   dynamic "event_trigger" {
     for_each = toset(local.create_pubsub_topic)

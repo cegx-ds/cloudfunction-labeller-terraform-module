@@ -87,3 +87,10 @@ variable "build_service_account" {
   description = "service account to use for the build step. If not set it falls back on default compute service account"
 }
 
+variable "environment_variables" {
+  type        = map(string)
+  default     = {}
+  description = "map of environment variables, if any, to apply to cloud function"
+}
+
+

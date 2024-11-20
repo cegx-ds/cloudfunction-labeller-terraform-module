@@ -20,7 +20,6 @@ No modules.
 | [google-beta_google_pubsub_topic.topic](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_pubsub_topic) | resource |
 | [google_cloudfunctions2_function.function](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions2_function) | resource |
 | [google_service_account.function](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account) | resource |
-| [google_storage_bucket_iam_member.function](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam_member) | resource |
 | [google_project.project](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/project) | data source |
 | [google_storage_bucket_object.src](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/storage_bucket_object) | data source |
 
@@ -35,6 +34,7 @@ No modules.
 | <a name="input_create_pubsub_topic"></a> [create\_pubsub\_topic](#input\_create\_pubsub\_topic) | Whether to create a pubsub topic and attach it to cloud function event trigger | `bool` | n/a | yes |
 | <a name="input_entry_point"></a> [entry\_point](#input\_entry\_point) | entry point for cloud function | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | environment name i.e. prod\|dev\|staging | `string` | n/a | yes |
+| <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | map of environment variables, if any, to apply to cloud function | `map(string)` | `{}` | no |
 | <a name="input_max_instance_count"></a> [max\_instance\_count](#input\_max\_instance\_count) | The maximum number of instances for the Cloud Function. | `number` | `10` | no |
 | <a name="input_min_instance_count"></a> [min\_instance\_count](#input\_min\_instance\_count) | The minimum number of instances for the Cloud Function. | `number` | `1` | no |
 | <a name="input_name"></a> [name](#input\_name) | Friendly name for all resources | `string` | n/a | yes |
