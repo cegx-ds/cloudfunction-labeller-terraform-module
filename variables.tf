@@ -93,4 +93,10 @@ variable "environment_variables" {
   description = "map of environment variables, if any, to apply to cloud function"
 }
 
+variable "ingress_settings" {
+  type        = string
+  default     = "ALLOW_INTERNAL_ONLY"
+  description = "Ingress settings to apply to cloud function"
+}
+
 

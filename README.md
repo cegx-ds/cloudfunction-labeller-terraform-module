@@ -35,6 +35,7 @@ No modules.
 | <a name="input_entry_point"></a> [entry\_point](#input\_entry\_point) | entry point for cloud function | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | environment name i.e. prod\|dev\|staging | `string` | n/a | yes |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | map of environment variables, if any, to apply to cloud function | `map(string)` | `{}` | no |
+| <a name="input_ingress_settings"></a> [ingress\_settings](#input\_ingress\_settings) | Ingress settings to apply to cloud function | `string` | `"ALLOW_INTERNAL_ONLY"` | no |
 | <a name="input_max_instance_count"></a> [max\_instance\_count](#input\_max\_instance\_count) | The maximum number of instances for the Cloud Function. | `number` | `10` | no |
 | <a name="input_min_instance_count"></a> [min\_instance\_count](#input\_min\_instance\_count) | The minimum number of instances for the Cloud Function. | `number` | `1` | no |
 | <a name="input_name"></a> [name](#input\_name) | Friendly name for all resources | `string` | n/a | yes |

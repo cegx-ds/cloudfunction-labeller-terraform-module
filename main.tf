@@ -58,7 +58,7 @@ resource "google_cloudfunctions2_function" "function" {
     available_memory      = var.available_memory
     available_cpu         = var.available_cpu
     timeout_seconds       = var.timeout_seconds
-    ingress_settings      = "ALLOW_INTERNAL_ONLY"
+    ingress_settings      = var.ingress_settings
     environment_variables = var.environment_variables
   }
 
